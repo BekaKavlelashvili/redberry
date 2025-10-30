@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Redberry | Fine Jewelry Boutique</title>
+    <meta
+      name="description"
+      content="Redberry is a curated fine jewelry experience celebrating modern icons and timeless craftsmanship."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Cormorant:wght@400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="announcement-bar">
+        Complimentary express shipping on orders over $450 · Redberry Rewards
+        launch in November
+      </div>
+      <div class="nav-bar">
+        <a class="logo" href="#home" aria-label="Redberry home">Redberry</a>
+        <button
+          class="nav-toggle"
+          aria-expanded="false"
+          aria-controls="primary-navigation"
+        >
+          <span class="nav-toggle__line"></span>
+          <span class="nav-toggle__line"></span>
+          <span class="nav-toggle__line"></span>
+          <span class="sr-only">Toggle navigation</span>
+        </button>
+        <nav
+          class="primary-navigation"
+          id="primary-navigation"
+          aria-label="Primary"
+        >
+          <ul>
+            <li class="nav-item nav-item--collections">
+              <a href="#collections" aria-haspopup="true">Collections</a>
+              <div class="nav-mega" aria-label="Collections menu">
+                <div class="nav-mega__content">
+                  <div class="nav-mega__section">
+                    <h3 class="nav-mega__title">Signature lines</h3>
+                    <ul class="nav-mega__list">
+                      <li>
+                        <a href="#collections">Velvet Dawn · Edition 07</a>
+                      </li>
+                      <li>
+                        <a href="#capsule-title">Resonance Suite capsule</a>
+                      </li>
+                      <li>
+                        <a href="#showcase-title">Stylist picks of the week</a>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="nav-mega__section">
+                    <h3 class="nav-mega__title">By form</h3>
+                    <ul class="nav-mega__list">
+                      <li><a href="#collections">Statement rings</a></li>
+                      <li>
+                        <a href="#collections">Necklaces &amp; lariats</a>
+                      </li>
+                      <li>
+                        <a href="#collections">Bracelets &amp; bangles</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="nav-mega__cta">
+                  <a class="button button--ghost" href="#experience"
+                    >Book a private viewing</a
+                  >
+                </div>
+              </div>
+            </li>
+            <li class="nav-item nav-item--designers">
+              <a href="#designers" aria-haspopup="true">Designers</a>
+              <div class="nav-mega" aria-label="Designers menu">
+                <div class="nav-mega__content">
+                  <div class="nav-mega__section">
+                    <h3 class="nav-mega__title">Featured ateliers</h3>
+                    <ul class="nav-mega__list">
+                      <li>
+                        <a href="#designers">Maya Sorensen · Sculpted metals</a>
+                      </li>
+                      <li>
+                        <a href="#designers"
+                          >Amir Taleb · Architectural forms</a
+                        >
+                      </li>
+                      <li>
+                        <a href="#designers">Leïla Bennani · Enamel artistry</a>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="nav-mega__section">
+                    <h3 class="nav-mega__title">Collaborations</h3>
+                    <ul class="nav-mega__list">
+                      <li><a href="#journal">Residency stories</a></li>
+                      <li><a href="#collections">Limited capsules</a></li>
+                      <li><a href="#experience">Designer salons</a></li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="nav-mega__cta">
+                  <a class="button button--ghost" href="#contact"
+                    >Submit your portfolio</a
+                  >
+                </div>
+              </div>
+            </li>
+            <li class="nav-item nav-item--experience">
+              <a href="#experience" aria-haspopup="true">Experience</a>
+              <div class="nav-mega" aria-label="Experience menu">
+                <div class="nav-mega__content">
+                  <div class="nav-mega__section">
+                    <h3 class="nav-mega__title">Salon rituals</h3>
+                    <ul class="nav-mega__list">
+                      <li>
+                        <a href="#experience">Private viewings in Mayfair</a>
+                      </li>
+                      <li>
+                        <a href="#experience">Virtual styling appointments</a>
+                      </li>
+                      <li><a href="#experience">Gem education sessions</a></li>
+                    </ul>
+                  </div>
+                  <div class="nav-mega__section">
+                    <h3 class="nav-mega__title">Signature services</h3>
+                    <ul class="nav-mega__list">
+                      <li>
+                        <a href="#experience">Bespoke atelier commissions</a>
+                      </li>
+                      <li><a href="#contact">Aftercare rituals</a></li>
+                      <li><a href="#cta">Redberry membership</a></li>
+                    </ul>
+                  </div>
+                </div>
+                <p class="nav-mega__note">
+                  Experiences available in London or worldwide by appointment.
+                </p>
+              </div>
+            </li>
+            <li class="nav-item nav-item--journal">
+              <a href="#journal" aria-haspopup="true">Journal</a>
+              <div class="nav-mega" aria-label="Journal menu">
+                <div class="nav-mega__content">
+                  <div class="nav-mega__section">
+                    <h3 class="nav-mega__title">Latest stories</h3>
+                    <ul class="nav-mega__list">
+                      <li>
+                        <a href="#journal">Madagascan sapphire provenance</a>
+                      </li>
+                      <li><a href="#journal">Inside the Resonance lab</a></li>
+                      <li><a href="#journal">Winter soirée edit</a></li>
+                    </ul>
+                  </div>
+                  <div class="nav-mega__section">
+                    <h3 class="nav-mega__title">Guides &amp; insights</h3>
+                    <ul class="nav-mega__list">
+                      <li><a href="#journal">Care rituals for heirlooms</a></li>
+                      <li><a href="#journal">Atelier residency diaries</a></li>
+                      <li><a href="#journal">Press &amp; collaborations</a></li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="nav-mega__cta">
+                  <a class="button button--ghost" href="#cta"
+                    >Join the Redberry circle</a
+                  >
+                </div>
+              </div>
+            </li>
+            <li class="nav-item nav-item--contact">
+              <a href="#contact" aria-haspopup="true">Contact</a>
+              <div class="nav-mega" aria-label="Contact menu">
+                <div class="nav-mega__content">
+                  <div class="nav-mega__section">
+                    <h3 class="nav-mega__title">Concierge</h3>
+                    <ul class="nav-mega__list">
+                      <li><a href="#contact">Schedule a consultation</a></li>
+                      <li><a href="#contact">Salon hours &amp; location</a></li>
+                      <li>
+                        <a href="mailto:concierge@redberry.com"
+                          >Email the team</a
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="nav-mega__section">
+                    <h3 class="nav-mega__title">Partnerships</h3>
+                    <ul class="nav-mega__list">
+                      <li><a href="#contact">Press &amp; collaborations</a></li>
+                      <li><a href="#designers">Designer residencies</a></li>
+                      <li><a href="#experience">Private events</a></li>
+                    </ul>
+                  </div>
+                </div>
+                <p class="nav-mega__note">
+                  We respond to every enquiry within 24 hours.
+                </p>
+              </div>
+            </li>
+          </ul>
+        </nav>
+        <div class="nav-actions">
+          <button
+            class="nav-action nav-action--search"
+            type="button"
+            aria-label="Search"
+          >
+            <span class="icon icon--search" aria-hidden="true">
+              <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
+                <path
+                  d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 1 0-.71.71l.27.28v.79l5 4.99L20.49 19zm-6 0a4.5 4.5 0 1 1 0-9 4.5 4.5 0 0 1 0 9z"
+                />
+              </svg>
+            </span>
+          </button>
+          <div class="cart-control">
+            <button
+              class="nav-action nav-action--cart"
+              type="button"
+              aria-label="View cart"
+              aria-expanded="false"
+              aria-controls="cart-panel"
+              data-cart-toggle
+            >
+              <span class="icon icon--cart" aria-hidden="true">
+                <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
+                  <path
+                    d="M7 4h-2l-1 2v2h2l3.6 7.59-1.35 2.44A1 1 0 0 0 9.14 20H19v-2H11l.1-.18L12 16h7a1 1 0 0 0 .95-.68l2-6A1 1 0 0 0 21 8H7.42l-.7-1.4A1 1 0 0 0 7 6V4zm3 16a2 2 0 1 0 2 2 2 2 0 0 0-2-2zm8 0a2 2 0 1 0 2 2 2 2 0 0 0-2-2z"
+                  />
+                </svg>
+              </span>
+              <span class="cart-badge" data-cart-count>0</span>
+            </button>
+            <div
+              class="cart-panel"
+              id="cart-panel"
+              role="dialog"
+              aria-label="Shopping cart"
+              data-cart-panel
+            >
+              <div class="cart-panel__header">
+                <h2>Cart</h2>
+                <p class="cart-panel__status" data-cart-empty-message>
+                  Your cart is empty.
+                </p>
+              </div>
+              <ul
+                class="cart-panel__list"
+                data-cart-list
+                aria-live="polite"
+              ></ul>
+              <div class="cart-panel__footer" data-cart-footer hidden>
+                <div class="cart-panel__total">
+                  <span>Total</span>
+                  <span data-cart-total>$0</span>
+                </div>
+                <button
+                  class="button button--primary"
+                  type="button"
+                  data-cart-checkout
+                >
+                  Checkout
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main id="home" class="page-content">
+      <section class="hero motion-section" id="hero">
+        <div class="hero__copy">
+          <p class="hero__eyebrow">Redberry Atelier 2025</p>
+          <h1 class="hero__headline">
+            Sculpted brilliance, curated for modern icons.
+          </h1>
+          <p class="hero__description">
+            Discover rare gemstones and contemporary silhouettes from visionary
+            designers across the globe. Each piece in the Redberry edit is
+            crafted to illuminate your narrative.
+          </p>
+          <div class="hero__actions">
+            <a class="button button--primary" href="#collections"
+              >Explore Collections</a
+            >
+            <a class="button button--ghost" href="#experience"
+              >Book a Private Session</a
+            >
+          </div>
+          <dl class="hero__metrics">
+            <div>
+              <dt>Designers represented</dt>
+              <dd>32</dd>
+            </div>
+            <div>
+              <dt>Limited pieces available</dt>
+              <dd>128</dd>
+            </div>
+            <div>
+              <dt>Global clientele</dt>
+              <dd>21k+</dd>
+            </div>
+          </dl>
+        </div>
+        <div class="hero__visual">
+          <figure>
+            <div class="hero__image hero__image--primary"></div>
+            <figcaption>
+              Redberry Signature Halo Collection · Crafted in Antwerp
+            </figcaption>
+          </figure>
+          <div class="hero__image hero__image--secondary"></div>
+        </div>
+      </section>
+
+      <section
+        class="banner-section banner-section--collections motion-section"
+        id="collections"
+      >
+        <div class="section-surface collection-highlights">
+          <div class="section-heading">
+            <p class="section-heading__eyebrow">Curations</p>
+            <h2>Edition 07 · The Velvet Dawn Collection</h2>
+            <p>
+              Rich garnets, champagne diamonds, and soft rose gold merge to
+              capture the hush of morning light. Limited availability through
+              December.
+            </p>
+          </div>
+          <div
+            class="highlights-carousel"
+            role="list"
+            aria-label="Featured collections"
+          >
+            <article class="highlight-card" role="listitem">
+              <p class="highlight-card__tag">New</p>
+              <h3>Solstice Bloom</h3>
+              <p>
+                Hand-cut rare sapphires set in sculptural prongs inspired by
+                botanical motifs.
+              </p>
+              <a href="#" class="highlight-card__cta">View 16 pieces</a>
+            </article>
+            <article class="highlight-card" role="listitem">
+              <p class="highlight-card__tag">Capsule</p>
+              <h3>Midnight Reverie</h3>
+              <p>
+                Oxidized platinum paired with black diamonds for avant-garde
+                evening statements.
+              </p>
+              <a href="#" class="highlight-card__cta">View 9 pieces</a>
+            </article>
+            <article class="highlight-card" role="listitem">
+              <p class="highlight-card__tag">Archival</p>
+              <h3>Celestial Threads</h3>
+              <p>
+                Constellation-inspired necklaces with floating solid gold
+                threads and invisible settings.
+              </p>
+              <a href="#" class="highlight-card__cta">View 12 pieces</a>
+            </article>
+            <article class="highlight-card" role="listitem">
+              <p class="highlight-card__tag">Coming Soon</p>
+              <h3>Desert Mirage</h3>
+              <p>
+                Warm citrine hues and fluid silhouettes crafted with recycled
+                18k gold.
+              </p>
+              <a href="#" class="highlight-card__cta">Join waitlist</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="banner-section banner-section--capsule motion-section"
+        aria-labelledby="capsule-title"
+      >
+        <div class="section-surface capsule-feature">
+          <div class="capsule-feature__media"></div>
+          <div class="capsule-feature__content">
+            <p class="section-heading__eyebrow">Signature Capsule</p>
+            <h2 id="capsule-title">The Redberry Resonance Suite</h2>
+            <p>
+              The Resonance Suite is a modular collection designed to evolve
+              with you. Interchangeable gemstone charms and convertible clasps
+              unlock infinite styling possibilities.
+            </p>
+            <ul class="feature-list">
+              <li>
+                Ethically sourced gemstones certified by the Responsible
+                Jewellery Council
+              </li>
+              <li>Customizable engravings and modular clasp system</li>
+              <li>Available exclusively through Redberry stylists</li>
+            </ul>
+            <div class="capsule-feature__actions">
+              <a class="button button--primary" href="#experience"
+                >Reserve a viewing</a
+              >
+              <a class="button button--ghost" href="#journal"
+                >Explore design story</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="banner-section banner-section--designers motion-section"
+        id="designers"
+      >
+        <div class="section-surface designers">
+          <div class="section-heading">
+            <p class="section-heading__eyebrow">Design House</p>
+            <h2>Redberry Designers in Focus</h2>
+            <p>
+              A global collective forging new paths in fine jewelry. Discover
+              intimate portraits, studio journals, and bespoke collaborations.
+            </p>
+          </div>
+          <div class="designer-grid">
+            <article class="designer-card">
+              <div
+                class="designer-card__image designer-card__image--maya"
+              ></div>
+              <div class="designer-card__body">
+                <h3>Maya Sorensen</h3>
+                <p>
+                  Stockholm-based goldsmith blending Scandinavian minimalism
+                  with expressive stone cuts.
+                </p>
+                <span class="designer-card__flag"
+                  >Limited series available</span
+                >
+              </div>
+            </article>
+            <article class="designer-card">
+              <div
+                class="designer-card__image designer-card__image--amir"
+              ></div>
+              <div class="designer-card__body">
+                <h3>Amir Taleb</h3>
+                <p>
+                  Architect-turned-jeweler shaping geometric silhouettes from
+                  reclaimed metals.
+                </p>
+                <span class="designer-card__flag">Exclusive to Redberry</span>
+              </div>
+            </article>
+            <article class="designer-card">
+              <div
+                class="designer-card__image designer-card__image--leila"
+              ></div>
+              <div class="designer-card__body">
+                <h3>Leïla Bennani</h3>
+                <p>
+                  Casablanca atelier weaving ancestral craftsmanship with
+                  luminous enamel finishes.
+                </p>
+                <span class="designer-card__flag">Bespoke orders open</span>
+              </div>
+            </article>
+            <article class="designer-card designer-card--highlight">
+              <div class="designer-card__body">
+                <h3>Join the Collective</h3>
+                <p>
+                  We collaborate with visionary designers who prioritize
+                  conscious sourcing and poetic design stories. Share your
+                  portfolio and atelier manifesto.
+                </p>
+                <a href="#contact" class="button button--primary"
+                  >Submit your work</a
+                >
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="banner-section banner-section--experience motion-section"
+        id="experience"
+      >
+        <div class="section-surface experience">
+          <div class="experience__intro">
+            <p class="section-heading__eyebrow">Flagship Experience</p>
+            <h2>Redberry Salon · London & Virtual</h2>
+            <p>
+              Personalized storytelling sessions, gem education, and styling
+              guidance tailored to your milestones.
+            </p>
+          </div>
+          <div class="experience__grid">
+            <article class="experience-card">
+              <h3>Private Viewing</h3>
+              <p>
+                Discover the latest curation with a dedicated stylist in our
+                Mayfair lounge or through high-definition virtual sessions.
+              </p>
+              <a href="#contact">Schedule</a>
+            </article>
+            <article class="experience-card">
+              <h3>Bespoke Atelier</h3>
+              <p>
+                Co-create heirloom pieces with our design council, from initial
+                sketches to final casting.
+              </p>
+              <a href="#contact">Begin your commission</a>
+            </article>
+            <article class="experience-card">
+              <h3>Aftercare Rituals</h3>
+              <p>
+                Lifetime polishing, gemstone security checks, and seasonal
+                styling consultations.
+              </p>
+              <a href="#journal">Discover our approach</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="banner-section banner-section--products motion-section"
+        aria-labelledby="showcase-title"
+      >
+        <div class="section-surface product-showcase">
+          <div class="section-heading">
+            <p class="section-heading__eyebrow">Trending Pieces</p>
+            <h2 id="showcase-title">Handpicked this week</h2>
+            <p>
+              Pieces curated by Redberry stylists for luminous gifting and
+              personal keepsakes.
+            </p>
+          </div>
+          <div class="product-grid">
+            <article class="product-card">
+              <div
+                class="product-card__image product-card__image--aurora"
+              ></div>
+              <div class="product-card__meta">
+                <h3>Aurora Prism Ring</h3>
+                <p>Bi-color tourmaline | 18k rose gold</p>
+                <span class="product-card__price">$4,320</span>
+              </div>
+              <div class="product-card__actions">
+                <a
+                  class="product-card__link"
+                  href="product-detail.html#aurora-prism-ring"
+                  >View details</a
+                >
+                <button
+                  class="button button--secondary"
+                  type="button"
+                  data-add-to-cart
+                  data-product-id="aurora-prism-ring"
+                  data-product-name="Aurora Prism Ring"
+                  data-product-price="4320"
+                  data-product-image="https://images.unsplash.com/photo-1520962918287-7448c2878f65?auto=format&fit=crop&w=360&q=75"
+                >
+                  Add to cart
+                </button>
+              </div>
+            </article>
+            <article class="product-card">
+              <div
+                class="product-card__image product-card__image--nocturne"
+              ></div>
+              <div class="product-card__meta">
+                <h3>Nocturne Lariat</h3>
+                <p>Black diamond pavé | Recycled platinum</p>
+                <span class="product-card__price">$3,960</span>
+              </div>
+              <div class="product-card__actions">
+                <a
+                  class="product-card__link"
+                  href="product-detail.html#nocturne-lariat"
+                  >View details</a
+                >
+                <button
+                  class="button button--secondary"
+                  type="button"
+                  data-add-to-cart
+                  data-product-id="nocturne-lariat"
+                  data-product-name="Nocturne Lariat"
+                  data-product-price="3960"
+                  data-product-image="https://images.unsplash.com/photo-1543294001-f7cd5d7fb516?auto=format&fit=crop&w=360&q=75"
+                >
+                  Add to cart
+                </button>
+              </div>
+            </article>
+            <article class="product-card">
+              <div
+                class="product-card__image product-card__image--sonata"
+              ></div>
+              <div class="product-card__meta">
+                <h3>Sonata Drop Earrings</h3>
+                <p>Champagne diamond | Hand-forged gold</p>
+                <span class="product-card__price">$5,780</span>
+              </div>
+              <div class="product-card__actions">
+                <a
+                  class="product-card__link"
+                  href="product-detail.html#sonata-drop-earrings"
+                  >View details</a
+                >
+                <button
+                  class="button button--secondary"
+                  type="button"
+                  data-add-to-cart
+                  data-product-id="sonata-drop-earrings"
+                  data-product-name="Sonata Drop Earrings"
+                  data-product-price="5780"
+                  data-product-image="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=360&q=75"
+                >
+                  Add to cart
+                </button>
+              </div>
+            </article>
+            <article class="product-card">
+              <div class="product-card__image product-card__image--halo"></div>
+              <div class="product-card__meta">
+                <h3>Halo Cascade Bracelet</h3>
+                <p>Floating setting | Pear-cut morganite</p>
+                <span class="product-card__price">$2,640</span>
+              </div>
+              <div class="product-card__actions">
+                <a
+                  class="product-card__link"
+                  href="product-detail.html#halo-cascade-bracelet"
+                  >View details</a
+                >
+                <button
+                  class="button button--secondary"
+                  type="button"
+                  data-add-to-cart
+                  data-product-id="halo-cascade-bracelet"
+                  data-product-name="Halo Cascade Bracelet"
+                  data-product-price="2640"
+                  data-product-image="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=360&q=75"
+                >
+                  Add to cart
+                </button>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="banner-section banner-section--journal motion-section"
+        id="journal"
+      >
+        <div class="section-surface journal">
+          <div class="section-heading">
+            <p class="section-heading__eyebrow">Journal</p>
+            <h2>Stories from the Redberry archive</h2>
+            <p>
+              Insights on gemstone provenance, collaborative ateliers, and the
+              art of future heirlooms.
+            </p>
+          </div>
+          <div class="journal-grid">
+            <article class="journal-card">
+              <p class="journal-card__tag">Provenance</p>
+              <h3>Tracing the journey of Madagascan sapphires</h3>
+              <p>
+                We travel to Ilakaka to understand the community-first
+                initiatives supporting responsible mining.
+              </p>
+              <a href="#">Read story</a>
+            </article>
+            <article class="journal-card">
+              <p class="journal-card__tag">Atelier Notes</p>
+              <h3>Inside the Redberry Resonance design lab</h3>
+              <p>
+                A look at the modular engineering and subtle settings behind our
+                signature capsule.
+              </p>
+              <a href="#">Go behind the scenes</a>
+            </article>
+            <article class="journal-card">
+              <p class="journal-card__tag">Curation</p>
+              <h3>Five luminous pieces for winter soirées</h3>
+              <p>
+                Our stylists share their edit for gatherings under candlelit
+                skies and city lights.
+              </p>
+              <a href="#">See the edit</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="cta"
+        class="banner-section banner-section--cta motion-section"
+        aria-label="Redberry membership invitation"
+      >
+        <div class="section-surface cta-banner">
+          <div class="cta-banner__copy">
+            <p class="section-heading__eyebrow">Membership</p>
+            <h2>Become part of the Redberry circle</h2>
+            <p>
+              Receive early access to limited releases, private events, and
+              atelier residencies.
+            </p>
+          </div>
+          <form class="cta-banner__form" action="#" method="POST">
+            <label class="sr-only" for="member-email">Email</label>
+            <input
+              type="email"
+              id="member-email"
+              name="email"
+              placeholder="Enter your email"
+              required
+            />
+            <button class="button button--primary" type="submit">
+              Join now
+            </button>
+          </form>
+        </div>
+      </section>
+
+      <section
+        class="banner-section banner-section--contact motion-section"
+        id="contact"
+      >
+        <div class="section-surface contact">
+          <div class="contact__copy">
+            <p class="section-heading__eyebrow">Contact</p>
+            <h2>Connect with Redberry stylists</h2>
+            <p>
+              Our concierge team responds within 24 hours. Share your story,
+              timeline, and preferred gemstones for a tailored experience.
+            </p>
+            <div class="contact__meta">
+              <div>
+                <h3>Visit</h3>
+                <p>
+                  Redberry Salon<br />12 Brook Street, Mayfair<br />London W1K
+                  4DG
+                </p>
+              </div>
+              <div>
+                <h3>Hours</h3>
+                <p>
+                  Tuesday–Saturday · 10:00 – 19:00<br />Virtual by appointment
+                </p>
+              </div>
+              <div>
+                <h3>Concierge</h3>
+                <p>
+                  <a href="tel:+442037654321">+44 20 3765 4321</a><br /><a
+                    href="mailto:concierge@redberry.com"
+                    >concierge@redberry.com</a
+                  >
+                </p>
+              </div>
+            </div>
+          </div>
+          <form class="contact__form" action="#" method="POST">
+            <div class="form-field">
+              <label for="name">Full name</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Your name"
+                required
+              />
+            </div>
+            <div class="form-field">
+              <label for="email">Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="name@email.com"
+                required
+              />
+            </div>
+            <div class="form-field">
+              <label for="interest">Primary interest</label>
+              <select id="interest" name="interest" required>
+                <option value="">Select an option</option>
+                <option value="viewing">Private viewing</option>
+                <option value="bespoke">Bespoke creation</option>
+                <option value="aftercare">Aftercare ritual</option>
+                <option value="press">Press & collaborations</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label for="message">Message</label>
+              <textarea
+                id="message"
+                name="message"
+                rows="4"
+                placeholder="Share details about your vision"
+              ></textarea>
+            </div>
+            <button class="button button--primary" type="submit">
+              Send message
+            </button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-footer__top">
+        <div class="site-footer__brand">
+          <a class="logo" href="#home">Redberry</a>
+          <p>
+            Elevating jewelry as modern storytelling. Curated with integrity,
+            crafted for legacy.
+          </p>
+        </div>
+        <div class="site-footer__links">
+          <div>
+            <h3>Explore</h3>
+            <ul>
+              <li><a href="#collections">Collections</a></li>
+              <li><a href="#designers">Designers</a></li>
+              <li><a href="#experience">Experience</a></li>
+              <li><a href="#journal">Journal</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3>Services</h3>
+            <ul>
+              <li><a href="#">Virtual appointments</a></li>
+              <li><a href="#">Repair & care</a></li>
+              <li><a href="#">Gift concierge</a></li>
+              <li><a href="#">Sustainability</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3>Follow</h3>
+            <ul>
+              <li><a href="#">Instagram</a></li>
+              <li><a href="#">Pinterest</a></li>
+              <li><a href="#">LinkedIn</a></li>
+              <li><a href="#">Journal RSS</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="site-footer__bottom">
+        <p>© 2025 Redberry. All rights reserved.</p>
+        <div class="site-footer__legal">
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+          <a href="#">Accessibility</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/main.js" defer></script>
+  </body>
+</html>
