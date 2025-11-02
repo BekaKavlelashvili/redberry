@@ -2,6 +2,7 @@ document.documentElement.classList.add('is-js');
 
 const navToggle = document.querySelector('.nav-toggle');
 const primaryNav = document.querySelector('.primary-navigation');
+const siteHeader = document.querySelector('.site-header');
 const body = document.body;
 
 if (primaryNav) {
@@ -17,8 +18,21 @@ if (primaryNav) {
 
         let closeTimeout;
 
+        const closeAllExcept = (current) => {
+            navItems.forEach((other) => {
+                if (other !== current) {
+                    other.classList.remove('is-open');
+                    const otherTrigger = other.querySelector('a');
+                    if (otherTrigger) {
+                        otherTrigger.setAttribute('aria-expanded', 'false');
+                    }
+                }
+            });
+        };
+
         const openItem = () => {
             clearTimeout(closeTimeout);
+            closeAllExcept(item);
             item.classList.add('is-open');
             trigger.setAttribute('aria-expanded', 'true');
         };
@@ -40,7 +54,7 @@ if (primaryNav) {
             }, 220);
         };
 
-        trigger.setAttribute('aria-expanded', 'false');
+    trigger.setAttribute('aria-expanded', 'false');
 
     const pointerTargets = [item, trigger, mega].filter(Boolean);
 
@@ -73,6 +87,58 @@ if (primaryNav) {
                 trigger.focus();
             }
         });
+
+        // Mobile: toggle submenu on tap, navigate on second tap
+        trigger.addEventListener('click', (event) => {
+            if (!mega) {
+                return; // simple link
+            }
+            const isMobile = window.matchMedia('(max-width: 880px)').matches || body.dataset.navOpen === 'true';
+
+            // Toggle behavior on both mobile and desktop when a mega menu exists
+            if (item.classList.contains('is-open')) {
+                // Close on click if already open
+                event.preventDefault();
+                closeItem();
+                return;
+            }
+
+            // If not open yet, open and prevent immediate navigation
+            event.preventDefault();
+            openItem();
+        });
+    });
+
+    // Close any open mega menus when clicking outside the nav
+    document.addEventListener('pointerdown', (event) => {
+        if (!primaryNav.contains(event.target)) {
+            navItems.forEach((item) => {
+                item.classList.remove('is-open');
+                const t = item.querySelector('a');
+                if (t) t.setAttribute('aria-expanded', 'false');
+            });
+        }
+    });
+
+    // Also close on click for broader compatibility and on Escape key
+    document.addEventListener('click', (event) => {
+        if (!primaryNav.contains(event.target)) {
+            navItems.forEach((item) => {
+                item.classList.remove('is-open');
+                const t = item.querySelector('a');
+                if (t) t.setAttribute('aria-expanded', 'false');
+            });
+        }
+    });
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+            navItems.forEach((item) => {
+                item.classList.remove('is-open');
+                const t = item.querySelector('a');
+                if (t) t.setAttribute('aria-expanded', 'false');
+            });
+        }
     });
 }
 
@@ -86,6 +152,13 @@ if (navToggle && primaryNav) {
         } else {
             delete primaryNav.dataset.open;
             delete body.dataset.navOpen;
+            // Close any open submenu when closing mobile nav
+            const navItems = primaryNav.querySelectorAll('.nav-item');
+            navItems.forEach((item) => {
+                item.classList.remove('is-open');
+                const t = item.querySelector('a');
+                if (t) t.setAttribute('aria-expanded', 'false');
+            });
         }
     });
 
@@ -97,6 +170,19 @@ if (navToggle && primaryNav) {
         });
     });
 }
+
+// Keep CSS variable --header-height in sync with actual header size to avoid content hiding
+const setHeaderHeightVar = () => {
+    if (!siteHeader) return;
+    const h = siteHeader.offsetHeight;
+    document.documentElement.style.setProperty('--header-height', `${h}px`);
+};
+
+setHeaderHeightVar();
+window.addEventListener('resize', setHeaderHeightVar);
+window.addEventListener('orientationchange', setHeaderHeightVar);
+const ro = 'ResizeObserver' in window ? new ResizeObserver(setHeaderHeightVar) : null;
+if (ro && siteHeader) ro.observe(siteHeader);
 
 const motionSections = document.querySelectorAll('.motion-section');
 
@@ -316,6 +402,19 @@ if (cartControl) {
             closeCart();
         }
     });
+
+    // Extra close hooks for robustness
+    document.addEventListener('click', (event) => {
+        if (!cartControl.contains(event.target)) {
+            closeCart();
+        }
+    });
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+            closeCart();
+        }
+    });
 }
 
 if (addToCartButtons.length) {
@@ -335,4 +434,5 @@ if (addToCartButtons.length) {
     });
 }
 
+// Ensure initial cart render
 renderCart();

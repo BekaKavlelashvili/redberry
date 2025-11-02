@@ -50,6 +50,34 @@ img {
     display: block;
 }
 
+/* Prevent accidental horizontal scrollbars at page level */
+html,
+body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+/* Improve text wrapping to avoid overflow on narrow screens */
+:where(h1, h2, h3, p, li, a, button, dt, dd) {
+    overflow-wrap: anywhere;
+    word-break: normal;
+    hyphens: auto;
+}
+
+/* Ensure flex/grid children can shrink properly without causing overflow */
+.hero__copy,
+.hero__visual,
+.capsule-feature__content,
+.contact__copy,
+.contact__form,
+.product-card,
+.designer-card,
+.experience-card,
+.journal-card,
+.detail-hero__content {
+    min-width: 0;
+}
+
 button,
 input,
 select,
@@ -367,7 +395,7 @@ textarea {
     border-radius: 24px;
     overflow: hidden;
     box-shadow: 0 45px 90px rgba(0, 0, 0, 0.45);
-    min-height: 320px;
+    min-height: clamp(16rem, 44vw, 20rem);
     background-size: cover;
     background-position: center;
     border: 1px solid rgba(255, 255, 255, 0.12);
@@ -381,7 +409,7 @@ textarea {
 .hero__image--secondary {
     grid-column: 5 / -1;
     background-image: linear-gradient(160deg, rgba(15, 117, 154, 0.32), rgba(64, 40, 143, 0.22)), url("https://images.unsplash.com/photo-1518544801958-efcbf8a7ec10?auto=format&fit=crop&w=600&q=80");
-    min-height: 380px;
+    min-height: clamp(18rem, 50vw, 24rem);
 }
 
 .section-heading {
@@ -417,12 +445,11 @@ textarea {
 
 .highlights-carousel {
     display: grid;
-    grid-auto-flow: column;
-    grid-auto-columns: minmax(240px, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 1.5rem;
-    overflow-x: auto;
-    padding-bottom: 0.5rem;
-    scroll-snap-type: x mandatory;
+    overflow: visible;
+    padding-bottom: 0;
+    scroll-snap-type: none;
 }
 
 .highlights-carousel::-webkit-scrollbar {
@@ -487,7 +514,7 @@ textarea {
 .capsule-feature__media {
     grid-column: 1 / 7;
     border-radius: 40px;
-    min-height: 420px;
+    min-height: clamp(20rem, 48vw, 32rem);
     background-image: linear-gradient(130deg, rgba(193, 155, 118, 0.15), rgba(123, 78, 43, 0.25)), url("https://images.unsplash.com/photo-1522312346375-d1a52e2b99b3?auto=format&fit=crop&w=1200&q=80");
     background-size: cover;
     background-position: center;
@@ -821,8 +848,10 @@ textarea {
     list-style: none;
     padding: 0;
     margin: 0;
-    display: grid;
-    gap: 0.5rem;
+    display: flex;          /* horizontal layout on all sizes */
+    flex-wrap: wrap;        /* wrap to next line instead of vertical stacking */
+    gap: 0.5rem 1rem;       /* row/column gap */
+    align-items: center;
 }
 
 .site-footer__bottom {
@@ -901,7 +930,7 @@ textarea {
     }
 }
 
-@media (max-width: 860px) {
+@media (max-width: 964px) {
     .nav-toggle {
         display: flex;
     }
@@ -914,6 +943,9 @@ textarea {
         padding: 6rem 2rem 2rem;
         transform: translateY(-100%);
         transition: transform 220ms ease;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        z-index: 1;
     }
 
     .primary-navigation ul {
@@ -922,6 +954,8 @@ textarea {
         font-size: 1.4rem;
         align-items: center;
         margin-top: 2rem;
+        width: min(92vw, 720px);
+        margin-inline: auto;
     }
 
     .primary-navigation[data-open="true"] {
@@ -930,6 +964,8 @@ textarea {
 
     .nav-actions {
         margin-left: auto;
+        position: relative;
+        z-index: 2; /* keep icons above overlay */
     }
 
     .nav-bar {
@@ -979,6 +1015,23 @@ textarea {
     .detail-hero__link {
         width: 100%;
     }
+
+    /* Footer: keep menu items horizontal (wrap across lines instead of stacking) */
+    .site-footer__links ul {
+        display: flex;            /* override grid */
+        flex-wrap: wrap;          /* allow multiple rows while remaining horizontal */
+        gap: 0.5rem 1rem;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+    .site-footer__links li {
+        display: inline-flex;
+    }
+
+    .site-footer__links a {
+        line-height: 1.4;
+    }
 }
 
 .page-content > .banner-section {
@@ -994,7 +1047,7 @@ textarea {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    overflow: hidden;
+    overflow: visible; /* allow inner cards/shadows to show on small screens */
 }
 
 .banner-section::before {
@@ -1158,13 +1211,18 @@ textarea {
 }
 
 main {
-    padding-top: 6.75rem;
+    padding-top: var(--header-height, 6.75rem);
 }
 
 .page-content > section {
     max-width: var(--max-width);
     margin: 0 auto;
     padding: clamp(3rem, 6vw, 5rem) clamp(1.5rem, 6vw, 4rem);
+}
+
+/* Offset anchor jumps so sticky header doesn't cover the top of sections */
+.page-content > section {
+    scroll-margin-top: calc(var(--header-height, 6.75rem) + 0.5rem);
 }
 
 h1,
@@ -1266,6 +1324,7 @@ p {
     max-width: var(--max-width);
     margin: 0 auto;
     padding: 0.9rem clamp(1.5rem, 5vw, 2.5rem);
+    position: relative; /* anchor for centered mega menus on desktop */
 }
 
 .logo {
@@ -1274,6 +1333,7 @@ p {
     letter-spacing: 0.22em;
     text-transform: uppercase;
     color: var(--color-white);
+    white-space: nowrap; /* keep brand on one line */
 }
 
 .primary-navigation ul {
@@ -1297,13 +1357,21 @@ p {
     transition: color 160ms ease;
 }
 
+/* Keep ONLY top-level menu item names as whole words; allow submenu links to wrap */
+.primary-navigation > ul > li > a {
+    overflow-wrap: normal;
+    word-break: keep-all;
+    hyphens: manual;
+    white-space: nowrap;
+}
+
 .primary-navigation a:hover,
 .primary-navigation a:focus {
     color: var(--color-white);
 }
 
 .nav-item {
-    position: relative;
+    position: static; /* allow mega menus to position relative to nav-bar */
 }
 
 .nav-mega {
@@ -1312,6 +1380,7 @@ p {
     top: 100%;
     transform: translate(-50%, 12px);
     width: clamp(520px, 60vw, 860px);
+    max-width: min(92vw, 860px);
     padding: 2.25rem clamp(2rem, 4vw, 3rem);
     background: linear-gradient(135deg, rgba(11, 11, 11, 0.95), rgba(88, 4, 4, 0.9));
     border-radius: var(--radius-lg);
@@ -1327,6 +1396,8 @@ p {
     color: rgba(255, 255, 255, 0.86);
     z-index: 15;
 }
+
+/* Center all mega menus relative to the nav bar on desktop */
 
 .nav-item.is-open > .nav-mega,
 .nav-item:hover > .nav-mega,
@@ -1403,7 +1474,7 @@ p {
 @media (max-width: 860px) {
     .nav-mega {
         position: static;
-        width: 100%;
+        width: min(92vw, 720px);
         transform: none;
         opacity: 1;
         visibility: visible;
@@ -1413,6 +1484,33 @@ p {
         border: 1px solid rgba(255, 255, 255, 0.16);
         box-shadow: none;
         padding: 1.5rem 1.75rem;
+        margin-inline: auto;
+        display: none; /* collapsed by default on mobile */
+    }
+
+    .nav-item.is-open > .nav-mega {
+        display: block; /* expand only the active item */
+    }
+
+    /* Center mega content and constrain inner width so lists sit in the middle */
+    .nav-mega__content {
+        grid-template-columns: 1fr;
+        justify-items: center;
+    }
+
+    .nav-mega__section {
+        width: min(100%, 520px);
+        margin-inline: auto;
+        text-align: left;
+    }
+
+    .nav-item {
+        width: 100%;
+    }
+
+    /* Slightly reduce spacing so letters don't appear too separated on mobile */
+    .primary-navigation a {
+        letter-spacing: 0.12em;
     }
 
     .nav-mega__content {
@@ -1429,6 +1527,7 @@ p {
     display: flex;
     align-items: center;
     gap: 1rem;
+    flex: 0 0 auto; /* don't shrink icons */
 }
 
 .nav-action {
@@ -1472,6 +1571,7 @@ p {
 
 .nav-action--cart {
     position: relative;
+    min-width: 0; /* allow nav to shrink before hiding icons */
 }
 
 .cart-badge {
@@ -1637,6 +1737,10 @@ p {
 }
 
 @media (max-width: 480px) {
+    .logo {
+        font-size: 1.6rem;
+        letter-spacing: 0.18em;
+    }
     .nav-action {
         width: 2.4rem;
         height: 2.4rem;
@@ -1645,6 +1749,13 @@ p {
     .icon {
         width: 1.2rem;
         height: 1.2rem;
+    }
+
+    /* Prevent spec rows from squeezing and overlapping on very small screens */
+    .detail-hero__specs li {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
     }
 }
 
@@ -1806,7 +1917,7 @@ p {
 .hero__image {
     border-radius: var(--radius-md);
     overflow: hidden;
-    min-height: 320px;
+    min-height: clamp(16rem, 44vw, 20rem);
     background-size: cover;
     background-position: center;
     border: 1px solid rgba(255, 255, 255, 0.16);
@@ -1821,7 +1932,7 @@ p {
 .hero__image--secondary {
     grid-column: 5 / -1;
     background-image: linear-gradient(160deg, rgba(11, 11, 11, 0.45), rgba(88, 4, 4, 0.3)), url("https://images.unsplash.com/photo-1518544801958-efcbf8a7ec10?auto=format&fit=crop&w=900&q=80");
-    min-height: 380px;
+    min-height: clamp(18rem, 50vw, 24rem);
 }
 
 .section-heading {
@@ -1852,12 +1963,11 @@ p {
 
 .highlights-carousel {
     display: grid;
-    grid-auto-flow: column;
-    grid-auto-columns: minmax(260px, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 1.5rem;
-    overflow-x: auto;
-    padding-bottom: 0.5rem;
-    scroll-snap-type: x mandatory;
+    overflow: visible;
+    padding-bottom: 0;
+    scroll-snap-type: none;
 }
 
 .highlights-carousel::-webkit-scrollbar {
@@ -1924,7 +2034,7 @@ p {
     background-image: linear-gradient(135deg, rgba(88, 4, 4, 0.75), rgba(11, 11, 11, 0.8)), url("https://images.unsplash.com/photo-1523362628745-0c100150b504?auto=format&fit=crop&w=1200&q=80");
     background-size: cover;
     background-position: center;
-    min-height: 440px;
+    min-height: clamp(20rem, 48vw, 32rem);
     box-shadow: var(--shadow-soft);
 }
 
@@ -2137,7 +2247,7 @@ p {
 .detail-product {
     display: grid;
     gap: clamp(2.5rem, 5vw, 4rem);
-    scroll-margin-top: 7rem;
+    scroll-margin-top: calc(var(--header-height, 6.75rem) + 0.5rem);
 }
 
 .detail-hero {
@@ -2477,7 +2587,7 @@ p {
 
 @media (max-width: 1024px) {
     main {
-        padding-top: 6rem;
+        padding-top: var(--header-height, 6.75rem);
     }
 
     .hero {
@@ -2503,9 +2613,37 @@ p {
     .contact {
         grid-template-columns: 1fr;
     }
+
+    /* Journal mega menu (and all megas) become single column and wrap text */
+    .nav-mega__content {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+    }
+
+    .nav-mega__section {
+        width: min(100%, 600px);
+        margin-inline: auto;
+    }
+
+    .nav-mega__list a {
+        white-space: normal;
+        overflow-wrap: anywhere;
+        word-break: normal;
+    }
+
+    /* Center capsule cards on tablet and smaller */
+    .capsule-feature {
+        justify-items: center;
+    }
+
+    .capsule-feature__media,
+    .capsule-feature__content {
+        width: min(100%, 720px);
+        margin-inline: auto;
+    }
 }
 
-@media (max-width: 880px) {
+@media (max-width: 964px) {
     .nav-toggle {
         display: flex;
     }
@@ -2520,6 +2658,9 @@ p {
         display: flex;
         align-items: center;
         justify-content: center;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        z-index: 1;
     }
 
     .primary-navigation ul {
@@ -2527,6 +2668,8 @@ p {
         gap: 2rem;
         font-size: 1.4rem;
         text-align: center;
+        width: min(92vw, 720px);
+        margin-inline: auto;
     }
 
     .primary-navigation[data-open="true"] {
@@ -2535,6 +2678,8 @@ p {
 
     .nav-actions {
         margin-left: auto;
+        position: relative;
+        z-index: 2; /* keep icons above overlay */
     }
 }
 
@@ -2590,5 +2735,157 @@ p {
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
         scroll-behavior: auto !important;
+    }
+}
+
+/* Mobile responsive refinements for very small devices (e.g., iPhone SE width) */
+@media (max-width: 360px) {
+    .announcement-bar {
+        font-size: 0.7rem;
+        padding: 0.45rem 0.75rem;
+    }
+
+    .nav-mega {
+        position: static;
+        width: min(92vw, 720px);
+        transform: none;
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        margin-top: 1.5rem;
+        background: rgba(11, 11, 11, 0.12);
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        box-shadow: none;
+        padding: 1.5rem 1.75rem;
+        margin-inline: auto;
+        display: none; /* collapsed by default on mobile */
+    }
+
+    .nav-item.is-open > .nav-mega {
+        display: block; /* expand only the active item */
+    }
+
+    /* Center mega content and constrain inner width so lists sit in the middle */
+    .nav-mega__content {
+        grid-template-columns: 1fr;
+        justify-items: center;
+    }
+
+    .nav-mega__section {
+        width: min(100%, 520px);
+        margin-inline: auto;
+        text-align: left;
+    }
+
+    .nav-item {
+        width: 100%;
+    }
+
+    /* Slightly reduce spacing so letters don't appear too separated on mobile */
+    .primary-navigation a {
+        letter-spacing: 0.12em;
+    }
+
+    .nav-action {
+        width: 2.2rem;
+        height: 2.2rem;
+    }
+
+    .icon {
+        width: 1.1rem;
+        height: 1.1rem;
+    }
+
+    .section-heading {
+        margin-bottom: 2rem;
+    }
+
+    .section-heading h2 {
+        font-size: 1.6rem;
+    }
+
+    .hero {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .hero__image {
+        min-height: 14rem;
+    }
+
+    .hero__image--secondary {
+        min-height: 16rem;
+    }
+
+    .hero__metrics {
+        padding: 1rem;
+        gap: 1rem;
+    }
+
+    .collection-highlights {
+        padding: 1.25rem;
+    }
+
+    .highlights-carousel {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+    }
+
+    .highlight-card {
+        padding: 1rem;
+        min-height: 200px;
+    }
+
+    .capsule-feature__content {
+        padding: 1.5rem;
+    }
+
+    .capsule-feature__media {
+        min-height: 18rem;
+        border-radius: 20px;
+    }
+
+    .designer-card {
+        min-height: 18rem;
+    }
+
+    .designer-card__body {
+        padding: 1.25rem;
+    }
+
+    .experience-card {
+        padding: 1.25rem;
+    }
+
+    .product-card__meta {
+        padding: 1.1rem;
+    }
+
+    .product-card__actions {
+        padding: 0 1.1rem 1.1rem;
+        gap: 0.6rem;
+    }
+
+    .journal-card {
+        padding: 1.25rem;
+    }
+
+    .cta-banner {
+        padding: 1.5rem;
+    }
+
+    .cta-banner__form input {
+        min-width: 0;
+        width: 100%;
+    }
+
+    .contact__copy,
+    .contact__form {
+        padding: 1.5rem;
+    }
+
+    .site-footer {
+        padding-left: 1rem;
+        padding-right: 1rem;
     }
 }
